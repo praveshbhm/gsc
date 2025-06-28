@@ -16,6 +16,12 @@ if uploaded_file:
     # Preprocessing
     df.columns = [col.lower().replace(" ", "_") for col in df.columns]
 
+    # Clean numeric columns
+    for col in ["clicks", "impressions", "ctr", "position"]:
+        if col in df.columns:
+            df[col] = df[col].astype(str).str.replace('%', '', regex=False)
+            df[col] = pd.to_numeric(df[col], errors='coerce')
+
     # Show raw data toggle
     if st.checkbox("Show Raw Data"):
         st.dataframe(df.head())
@@ -23,7 +29,7 @@ if uploaded_file:
     # KPIs
     total_clicks = df["clicks"].sum()
     total_impressions = df["impressions"].sum()
-    avg_ctr = (df["ctr"].mean()) * 100
+    avg_ctr = df["ctr"].mean() * 100
     avg_position = df["position"].mean()
 
     st.markdown("### Overall Performance")
