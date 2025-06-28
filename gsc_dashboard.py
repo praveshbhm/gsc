@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 
+"""
+Google Search Console Data Analyzer
+Developed by Pravesh Patel
+"""
+
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
