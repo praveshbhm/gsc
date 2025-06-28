@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 st.set_page_config(page_title="GSC Analyzer", layout="wide")
 
 st.title("Google Search Console Data Analyzer")
-
+st.markdown("*Developed by **Pravesh Patel***", unsafe_allow_html=True)
 uploaded_file = st.file_uploader("Upload GSC CSV Export (Performance > Queries or Pages)", type=["csv"])
 
 if uploaded_file:
